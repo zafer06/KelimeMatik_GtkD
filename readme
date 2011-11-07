@@ -3,3 +3,19 @@ KelimeMatik - Kelime Egzersiz Programı
 KelimeMatik özellikle yabancı dil öğrenenlerin yeni kelimeleri
 ezberlemek amacıyla kullanabilecekleri basit bir kelime egzersiz
 programıdır.
+
+Oluşturmak:
+
+  $ make
+
+Çalıştırmak:
+
+  $ bin/KelimeMatik
+
+Program dosyalarını silmek:
+
+  $ make temizle
+
+veya
+
+  $ make clean
