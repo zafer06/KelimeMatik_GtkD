@@ -26,6 +26,7 @@ class Veri
 		assert(exists(veriDosyasi), "Hata, dosya bulunamadi!");
 		
 		_kelimeDosyasi = veriDosyasi;
+		
 		KelimeListesiHazirla();
 	}
 

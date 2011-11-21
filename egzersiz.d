@@ -42,6 +42,32 @@ class Egzersiz
 		}	
 	}
 	
+	public void EgzersizBaslat(int soruSayisi)
+	{
+		Veri veriler = new Veri(_dosyaAdresi);
+	
+		Kelime[] kelimeListe = veriler.VerKelimeListesi();
+		
+		foreach (kelime; kelimeListe)
+		{
+			//EkraniTemizle();
+			
+			writeln("Soru  : ", kelime.soru);
+			
+			write("Cevap : ");
+			string verilenCevap = chomp(readln());
+
+			if (CevabiKontrolEt(kelime, verilenCevap))
+			{
+				writeln("Tebrikler! dogru cevap\n");
+			}
+			else
+			{
+				writeln("Uzgunum! yanlis cevap\n");
+			}
+		}
+	}
+	
 	private bool CevabiKontrolEt(Kelime kelime, string verilenCevap)
 	{
 		bool cevapDogruMu = false;
