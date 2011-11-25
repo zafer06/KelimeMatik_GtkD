@@ -8,14 +8,20 @@ import gtk.HBox;
 import gtk.Button;
 import gtk.MessageDialog;
 import gtk.AboutDialog;
+import gtk.ComboBox;
+
+import kullanici;
 
 class KullaniciEkran : Window
 {
 	private Label lblKullaniciAdi;
 	private Entry txtKullaniciAdi;
-	
-	public this()
+	private ComboBox cmbKullanici;
+    
+	public this(ComboBox kullanicilar)
 	{
+        cmbKullanici = kullanicilar;
+        
 		super("Kullanıcı Ekle");
 		EkraniHazirla();
 		setSizeRequest(250, 100);
@@ -41,11 +47,13 @@ class KullaniciEkran : Window
 	
 	private void Kaydet_Click(Button btn)
 	{
-		//lblKullaniciAdi.setText(txtKullaniciAdi.getText());
+		Kullanici kisi = new Kullanici();
+		kisi.KullaniciEkle(txtKullaniciAdi.getText());
+        cmbKullanici.appendText(txtKullaniciAdi.getText());
 		
-		MessageDialog d = new MessageDialog(this, GtkDialogFlags.MODAL, MessageType.WARNING, ButtonsType.OK, "This is a popup message!");
-		d.run();
-		d.destroy();
+		//MessageDialog d = new MessageDialog(this, GtkDialogFlags.MODAL, MessageType.WARNING, ButtonsType.OK, "This is a popup message!");
+		//d.run();
+		//d.destroy();
 	}
 	
 	@property string KullaniciAdi()

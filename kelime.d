@@ -21,7 +21,7 @@ class AnaEkran : MainWindow
 	
 	public this()
 	{
-		super("KelimeMatik -- 0.5.0");
+		super("KelimeMatik -- 0.5.0 (Begonya)");
 		EkraniHazirla();
 		setSizeRequest(640, 480);
 		setPosition(GtkWindowPosition.POS_CENTER_ALWAYS);

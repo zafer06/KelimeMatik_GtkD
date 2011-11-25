@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<kullanicilar>
+   <kullanici>
+        <isim>Özlem</isim>
+   </kullanici>
+   <kullanici>
+      <isim>Hasan</isim>
+   </kullanici>
+   <kullanici>
+        <isim>Pınar</isim>
+   </kullanici>
+   <kullanici>
+      <isim>Zafer</isim>
+   </kullanici>
+   <kullanici>
+      <isim>aaa</isim>
+   </kullanici>
+   <kullanici>
+      <isim>bbb</isim>
+   </kullanici>
+</kullanicilar>

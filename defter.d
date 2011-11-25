@@ -8,29 +8,34 @@ import gtk.Button;
 import gtk.VBox;
 import gtk.HBox;
 import gtk.Box;
+import gtk.Entry;
 
 import kullaniciFrm;
+import kullanici;
 
 class Defter : Notebook
 { 
-	private ComboBox cmbKullanici;
-	
+    private ComboBox cmbKullanici;
+    
 	public this()
 	{
 		KullaniciGiris_Sayfasi();
 		EgzersizHazirla_Sayfasi();
 		Hakkinda_Sayfasi();
 	}
-	
+    
 	private void KullaniciGiris_Sayfasi()
 	{
 		Label lblSecimMetin = new Label("Lütfen bir kullanıcı seçin");
 		
 		cmbKullanici = new ComboBox();
-		cmbKullanici.appendText("Özlem");
-		cmbKullanici.appendText("Hasan");
-		cmbKullanici.appendText("Ahmet");
-		cmbKullanici.appendText("Pınar");
+		
+		Kullanici kullanicilar = new Kullanici();
+		
+		foreach(isim; kullanicilar.liste)
+		{
+			cmbKullanici.appendText(isim);	
+		}
 		
 		Label lblVeya = new Label("veya");
 		
@@ -65,11 +70,37 @@ class Defter : Notebook
 	
 	private void EgzersizHazirla_Sayfasi()
 	{
-		Label lbl = new Label("Egzersiz Hazırla : ");
+		// Soru kelimesi başlık metni
+		Label lblBaslik = new Label("Soru Kelimesi");
+		lblBaslik.setMarkup("<span foreground='black' font='20' font_weight='bold'>Soru Kelimesi</span>");
+		
+		Label lblSoru = new Label("Book");
+		lblSoru.setMarkup("<span foreground='black' font='20' font_weight='bold'>Book</span>");
+		
+		Entry txtCevap = new Entry();
+		
+		Button btnCevap = new Button("Cevapla");
+		btnCevap.addOnClicked(&SoruCevapla_Click);
+		
+		VBox boxKutu = new VBox(false, 3);
+		boxKutu.setSpacing = 10;
+		
+		boxKutu.packStart(lblSoru, false, false, 1);
+		boxKutu.packStart(txtCevap, false, false, 1);
+		boxKutu.packStart(btnCevap, false, false, 1);
+		
+		
+		Label lblSolBosluk = new Label("");
+		Label lblSagBosluk = new Label("");
+		
+		HBox boxHizaKutu = new HBox(false, 3);
+		boxHizaKutu.packStartDefaults(lblSolBosluk);
+		boxHizaKutu.packStart(boxKutu, false, false, 2);
+		boxHizaKutu.packStartDefaults(lblSagBosluk);
 		
 		Frame frame = new Frame("Egzersiz");
-		//frame.setSizeRequest(100, 300);
-		frame.add(lbl);
+		frame.setSizeRequest(50, 50);
+		frame.add(boxHizaKutu);
 		
 		Label lblTabEgzersizBaslik = new Label("Egzersiz Hazırla");
 		this.appendPage(frame, lblTabEgzersizBaslik);	
@@ -81,7 +112,7 @@ class Defter : Notebook
 		lblProgram.setMarkup("<span foreground='red' font='32' font_weight='bold'>KelimeMatik</span>");
 		
 		Label lblSurum = new Label("KelimeMatik");
-		lblSurum.setMarkup("<span foreground='red' font='10' font_weight='bold'>sürüm : 0.5.0</span>");
+		lblSurum.setMarkup("<span foreground='red' font='10' font_weight='bold'>sürüm : 0.5.0 (Begonya)</span>");
 		
 		Label lblHazirlayan = new Label("Hazırlayanlar");
 		lblHazirlayan.setMarkup("<span foreground='black' font='20' font_weight='bold'>Hazırlayanlar</span>");
@@ -109,8 +140,13 @@ class Defter : Notebook
 	
 	private void YeniKullaniciEkle_Click(Button btn)
 	{
-		KullaniciEkran kullanici = new KullaniciEkran();
+		KullaniciEkran kullanici = new KullaniciEkran(cmbKullanici);
 		
 		//cmbKullanici.appendText(kullanici.KullaniciAdi);
+	}
+	
+	private void SoruCevapla_Click(Button btn)
+	{
+		//
 	}
 }
